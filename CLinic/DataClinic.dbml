@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Clinic" Class="DataClinicDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LENOVO-PC;Initial Catalog=Clinic;Integrated Security=True" SettingsObjectName="CLinic.Properties.Settings" SettingsPropertyName="ClinicConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Referrals" Member="Referrals">
+    <Type Name="Referrals">
+      <Column Name="ReferralID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DoctorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ReferralNumber" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="SpecializationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Referrals_Visits" Member="Visits" ThisKey="ReferralID" OtherKey="ReferralID" Type="Visits" />
+      <Association Name="Specializations_Referrals" Member="Specializations" ThisKey="SpecializationId" OtherKey="SpecializationID" Type="Specializations" IsForeignKey="true" />
+      <Association Name="Users_Referrals" Member="Users" ThisKey="DoctorID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
+      <Association Name="Users_Referrals1" Member="Users1" ThisKey="PatientID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Specializations" Member="Specializations">
+    <Type Name="Specializations">
+      <Column Name="SpecializationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SpecializationName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="SpecializationImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Specializations_Referrals" Member="Referrals" ThisKey="SpecializationID" OtherKey="SpecializationId" Type="Referrals" />
+      <Association Name="Specializations_Users" Member="Users" ThisKey="SpecializationID" OtherKey="specializationID" Type="Users" />
+      <Association Name="Specializations_Visits" Member="Visits" ThisKey="SpecializationID" OtherKey="SpecializationID" Type="Visits" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Pesel" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="specializationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Users_Referrals" Member="Referrals" ThisKey="UserID" OtherKey="DoctorID" Type="Referrals" />
+      <Association Name="Users_Referrals1" Member="Referrals1" ThisKey="UserID" OtherKey="PatientID" Type="Referrals" />
+      <Association Name="Users_Visits" Member="Visits" ThisKey="UserID" OtherKey="DoctorID" Type="Visits" />
+      <Association Name="Users_Visits1" Member="Visits1" ThisKey="UserID" OtherKey="PatientID" Type="Visits" />
+      <Association Name="Specializations_Users" Member="Specializations" ThisKey="specializationID" OtherKey="SpecializationID" Type="Specializations" IsForeignKey="true" />
+      <Association Name="UserCategories_Users" Member="UserCategories" ThisKey="CategoryID" OtherKey="CategoryID" Type="UserCategories" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserCategories" Member="UserCategories">
+    <Type Name="UserCategories">
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Association Name="UserCategories_Users" Member="Users" ThisKey="CategoryID" OtherKey="CategoryID" Type="Users" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Visits" Member="Visits">
+    <Type Name="Visits">
+      <Column Name="VisitID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VisitDateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DoctorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpecializationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReferralID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Users_Visits" Member="Users" ThisKey="DoctorID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
+      <Association Name="Referrals_Visits" Member="Referrals" ThisKey="ReferralID" OtherKey="ReferralID" Type="Referrals" IsForeignKey="true" />
+      <Association Name="Specializations_Visits" Member="Specializations" ThisKey="SpecializationID" OtherKey="SpecializationID" Type="Specializations" IsForeignKey="true" />
+      <Association Name="Users_Visits1" Member="Users1" ThisKey="PatientID" OtherKey="UserID" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewSpecializations" Member="ViewSpecializations">
+    <Type Name="ViewSpecializations">
+      <Column Name="SpecializationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SpecializationName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="SpecializationImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewUsers" Member="ViewUsers">
+    <Type Name="ViewUsers">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pesel" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="SpecializationName" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="specializationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewUserWithoutAdmin" Member="ViewUserWithoutAdmin">
+    <Type Name="ViewUserWithoutAdmin">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pesel" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="SpecializationName" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="specializationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
