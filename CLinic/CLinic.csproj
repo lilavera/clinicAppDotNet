@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CLinic</RootNamespace>
     <AssemblyName>CLinic</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,34 +55,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClinicDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ClinicDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ClinicDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="config\CurrentUser.cs" />
     <Compile Include="config\PasswordVerification.cs" />
     <Compile Include="DataClinic.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClinic.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="form\Admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form\AdminView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\AdminView.Designer.cs">
-      <DependentUpon>AdminView.cs</DependentUpon>
     </Compile>
     <Compile Include="form\Doctor.cs">
       <SubType>Form</SubType>
@@ -102,12 +82,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="form\Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\AdminView.resx">
-      <DependentUpon>AdminView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="form\Doctor.resx">
       <DependentUpon>Doctor.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,28 +111,6 @@
     </None>
     <None Include="ClinicDataSet.xss">
       <DependentUpon>ClinicDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet1.xsc">
-      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ClinicDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ClinicDataSet1.xss">
-      <DependentUpon>ClinicDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet2.xsc">
-      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="ClinicDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ClinicDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ClinicDataSet2.xss">
-      <DependentUpon>ClinicDataSet2.xsd</DependentUpon>
     </None>
     <None Include="DataClinic.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
