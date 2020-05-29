@@ -1,0 +1,12 @@
+C:\Users\lenovo\source\repos\CLinic\CLinic\bin\Debug\CLinic.exe.config
+C:\Users\lenovo\source\repos\CLinic\CLinic\bin\Debug\CLinic.exe
+C:\Users\lenovo\source\repos\CLinic\CLinic\bin\Debug\CLinic.pdb
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.form.Doctor.resources
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.form.Login.resources
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.form.Registration.resources
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.Properties.Resources.resources
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.csproj.GenerateResource.cache
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.exe
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.pdb
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.form.Admin.resources
+C:\Users\lenovo\source\repos\CLinic\CLinic\obj\Debug\CLinic.csprojAssemblyReference.cache

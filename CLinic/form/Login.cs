@@ -59,7 +59,7 @@ namespace CLinic.form
                             if (config.CurrentUser.UserCategory.Equals("Admin"))
                             {
                                 Hide();
-                                new AdminView().ShowDialog();
+                                new Admin().ShowDialog();
                                 Close();
                             }
                         }
